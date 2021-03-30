@@ -1,0 +1,26 @@
+spring:
+  kafka:
+    properties:
+    # Kafka
+      bootstrap:
+        servers: 169.51.51.163:30201
+     # Confluent Schema Registry
+      schema:
+        registry:
+          url: http://169.51.51.163:30202
+    # com.leonardo.examples.kafkaincubator.component.Producer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #value-serializer: io.conluent.kafka.serializers.KafkaAvroSerializer
+    # Consumer
+    consumer:
+      auto-consumer-offset: earliest
+      key-serializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      #value-serializer: io.conluent.kafka.serializers.KafkaAvroDeserializer
+
+application:
+  kafka:
+    producer:
+      fixedDelay_ms: 360000
